@@ -4,6 +4,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
+
 function LoginForm({ values, errors, touched, isSubmitting, handleSubmit, status }) {
   const [users, setUsers] = useState([])
   console.log('users up',users);
@@ -36,10 +37,11 @@ function LoginForm({ values, errors, touched, isSubmitting, handleSubmit, status
         <option value="platinum">Platinum</option>
       </Field>
       <button disabled={isSubmitting}>Submit</button>
+))}
     </Form>
 
 {users.map(user => (
-  <p key={user.id}>{user.name}</p>
+  <p key={user.id}>{user.email} = {user.meal}</p>
 ))}
 </div>
   );
@@ -75,7 +77,7 @@ const FormikLoginForm = withFormik({
         setStatus(res.data);
         console.log(res.data); // Data was created successfully and logs to console
         // console.log('status',status); // Data was created successfully and logs to console
-          resetForm();
+          // resetForm();
           setSubmitting(false);
         })
         .catch(err => {
