@@ -41,7 +41,10 @@ function LoginForm({ values, errors, touched, isSubmitting, handleSubmit, status
     </Form>
 
 {users.map(user => (
-  <p key={user.id}>{user.email} = {user.meal}</p>
+  <div style={{textAlign: 'left',marginLeft: '20%', border: 'medium solid black',width: '500px'}} key={user.id}>
+  <ul>{user.id}</ul><li style={{marginLeft: '20%',width: '500px'}}> email: {user.email}</li> <li style={{marginLeft: '20%',width: '500px'}}>meal: {user.meal}</li>
+  </div>
+
 ))}
 </div>
   );
@@ -61,7 +64,7 @@ const FormikLoginForm = withFormik({
       .email("Email not valid")
       .required("Email is required"),
     password: Yup.string()
-      .min(16, "Password must be 16 characters or longer")
+      .min(1, "Password must be 1 characters or longer")
       .required("Password is required")
   }),
 
